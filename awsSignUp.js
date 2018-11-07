@@ -127,7 +127,7 @@ function registerUser(req, res, next) {
         }
       }
       var confirmParams = {
-        UserPoolId: 'us-west-2_kGz5qyw3W',
+        UserPoolId: 'userpoolid',
         Username: req.body.email
       };
       // Confirm the user
