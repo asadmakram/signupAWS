@@ -135,19 +135,18 @@ function registerUser(req, res, next) {
       cognitoidentityserviceprovider.adminConfirmSignUp(confirmParams, function(err, result) {
         if (err) console.log(err, err.stack);
         if (event.request.userAttributes.hasOwnProperty("email")) {
-          event.response.autoVerifyEmail = 'true';
-      }
-
-      // Return to Amazon Cognito
-      callback(null, event);
-      if (err) {
-        console.log("Error aws: ", err.message);
-        // return;
-      }
-      cognitoUser = result.user;
-      console.log('user name is ' + cognitoUser.getUsername());
-      next();
-      // return;
+        event.response.autoVerifyEmail = 'true';
+        // Return to Amazon Cognito
+        callback(null, event);
+        if (err) {
+          console.log("Error aws: ", err.message);
+          // return;
+        }
+        cognitoUser = result.user;
+        console.log('user name is ' + cognitoUser.getUsername());
+        next();
+          
+        }
     });
 
   });
